@@ -4,3 +4,4 @@ There is currently no REST controller or UI implementation, so funcionality is o
 Once the REST controller and UI are implemented, I will update this with a user guide. 
 
 If you would like to purely test the webcrawling and/or database functionality though, you can do so by connecting your own database via the application.properties file. 
+The UrlEntity class provides the necessary mapping information for proper database setup. 
