@@ -58,11 +58,13 @@ public class WebCrawlerServiceImpl implements WebCrawlerService{
 
     @Override
     public ArrayList<UrlEntity> queryUrlEntitiesByDomain(String domain) {
+        //todo
         return null;
     }
 
     @Override
     public ArrayList<UrlEntity> queryUrlEntitiesByScheme(String scheme) {
+        //todo
         return null;
     }
 

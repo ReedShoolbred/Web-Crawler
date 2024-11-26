@@ -41,4 +41,16 @@ public class UrlEntityDAOImpl implements UrlEntityDAO {
     public int deleteAll() {
         return entityManager.createQuery("DELETE FROM UrlEntity").executeUpdate();
     }
+
+    @Override
+    public UrlEntity findByDomain() {
+        //todo
+        return null;
+    }
+
+    @Override
+    public UrlEntity findByScheme() {
+        //todo
+        return null;
+    }
 }
