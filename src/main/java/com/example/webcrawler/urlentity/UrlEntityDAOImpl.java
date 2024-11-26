@@ -1,6 +1,5 @@
-package com.example.webcrawler.dao;
+package com.example.webcrawler.urlentity;
 
-import com.example.webcrawler.entity.UrlEntity;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

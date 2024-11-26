@@ -1,7 +1,6 @@
-package com.example.webcrawler.entity;
+package com.example.webcrawler.urlentity;
 
 import jakarta.persistence.*;
-import org.springframework.context.annotation.Primary;
 
 /**
  * UrlEntity provides database mapping for a Java URL object.

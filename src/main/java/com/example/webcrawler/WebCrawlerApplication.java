@@ -1,9 +1,8 @@
 package com.example.webcrawler;
 
-import com.example.webcrawler.dao.UrlEntityDAO;
-import com.example.webcrawler.entity.UrlEntity;
-import com.example.webcrawler.service.WebCrawlerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.webcrawler.urlentity.UrlEntityDAO;
+import com.example.webcrawler.urlentity.UrlEntity;
+import com.example.webcrawler.webcrawler.WebCrawlerService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +13,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class WebCrawlerApplication {

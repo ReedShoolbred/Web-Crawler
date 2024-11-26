@@ -1,4 +1,4 @@
-package com.example.webcrawler.service;
+package com.example.webcrawler.webcrawler;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

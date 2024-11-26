@@ -1,4 +1,4 @@
-package com.example.webcrawler.service;
+package com.example.webcrawler.webcrawler;
 
 import org.junit.jupiter.api.Test;
 

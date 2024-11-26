@@ -1,6 +1,4 @@
-package com.example.webcrawler.dao;
-
-import com.example.webcrawler.entity.UrlEntity;
+package com.example.webcrawler.urlentity;
 
 public interface UrlEntityDAO {
 
@@ -9,5 +7,9 @@ public interface UrlEntityDAO {
     UrlEntity findById(Integer id);
 
     int deleteAll();
+
+    UrlEntity findByDomain();
+
+    UrlEntity findByScheme();
 
 }

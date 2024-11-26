@@ -1,9 +1,8 @@
-package com.example.webcrawler.service;
+package com.example.webcrawler.webcrawler;
 
-import com.example.webcrawler.dao.UrlEntityDAO;
-import com.example.webcrawler.entity.UrlEntity;
+import com.example.webcrawler.urlentity.UrlEntityDAO;
+import com.example.webcrawler.urlentity.UrlEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -34,27 +33,37 @@ public class WebCrawlerServiceImpl implements WebCrawlerService{
 
     /**
      * Saves all URL object in traversedUrls to the database
-     * @param traversedUrls - ArrayList of URL objects
+     * @param traversedUrlEntities - ArrayList of URL objects
      */
     @Override
-    public void saveAll(ArrayList<URL> traversedUrls) {
-        for (URL tempUrl: traversedUrls){
+    public void saveAll(ArrayList<UrlEntity> traversedUrlEntities) {
+        for (UrlEntity tempUrl: traversedUrlEntities){
            save(tempUrl);
         }
     }
 
     /**
      * Save url to database by delegating to urlEntityDAO
-     * @param url - URL object to be saved
+     * @param urlEntity - UrlEntity object to be saved
      */
     @Override
-    public void save(URL url) {
-        urlEntityDAO.save(new UrlEntity(url));
+    public void save(UrlEntity urlEntity) {
+        urlEntityDAO.save(urlEntity);
     }
 
     @Override
     public int deleteAll() {
         return urlEntityDAO.deleteAll();
+    }
+
+    @Override
+    public ArrayList<UrlEntity> queryUrlEntitiesByDomain(String domain) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<UrlEntity> queryUrlEntitiesByScheme(String scheme) {
+        return null;
     }
 
 }

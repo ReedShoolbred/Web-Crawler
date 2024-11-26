@@ -1,6 +1,7 @@
 package com.example.webcrawler.dao;
 
-import com.example.webcrawler.entity.UrlEntity;
+import com.example.webcrawler.urlentity.UrlEntity;
+import com.example.webcrawler.urlentity.UrlEntityDAO;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
