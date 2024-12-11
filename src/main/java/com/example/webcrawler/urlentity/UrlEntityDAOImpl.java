@@ -43,13 +43,12 @@ public class UrlEntityDAOImpl implements UrlEntityDAO {
     }
 
     @Override
-    public UrlEntity findByDomain() {
-        //todo
+    public UrlEntity findByDomain(String domain) {
         return null;
     }
 
     @Override
-    public UrlEntity findByScheme() {
+    public UrlEntity findByScheme(String domain) {
         //todo
         return null;
     }

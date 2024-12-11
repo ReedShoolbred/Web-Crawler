@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WebCrawlerServiceImplTest {
 
@@ -33,7 +34,7 @@ public class WebCrawlerServiceImplTest {
     public void saveAll_shouldCallDaoSaveMethodCorrectAmountOfTimes() throws URISyntaxException, MalformedURLException{
         //arrange
         UrlEntityDAO theUrlEntityDAO = mock(UrlEntityDAO.class);
-        WebCrawlerServiceImpl theWebCrawlerServiceImpl = new WebCrawlerServiceImpl(theUrlEntityDAO);
+        WebCrawlerService theWebCrawlerService = new WebCrawlerServiceImpl(theUrlEntityDAO);
         URL theUrl = new URI("https://www.google.com").toURL();
         UrlEntity theUrlEntity = new UrlEntity(theUrl);
         ArrayList<UrlEntity> urlEntities = new ArrayList<UrlEntity>(10);
@@ -42,9 +43,23 @@ public class WebCrawlerServiceImplTest {
         }
 
         //act
-        theWebCrawlerServiceImpl.saveAll(urlEntities);
+        theWebCrawlerService.saveAll(urlEntities);
 
         //assert
         verify(theUrlEntityDAO, times(10)).save(theUrlEntity);
+    }
+
+    @Test
+    public void deleteAll_shouldReturnCorrectAmountOfDeletions() {
+        //arrange
+        UrlEntityDAO theUrlEntityDao = mock(UrlEntityDAO.class);
+        WebCrawlerService theWebCrawlerService = new WebCrawlerServiceImpl(theUrlEntityDao);
+        when(theUrlEntityDao.deleteAll()).thenReturn(1);
+
+        //act
+        int valuesDeleted = theWebCrawlerService.deleteAll();
+
+        //assert
+        assertEquals(1, valuesDeleted);
     }
 }

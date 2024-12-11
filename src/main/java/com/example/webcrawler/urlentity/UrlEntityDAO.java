@@ -8,8 +8,8 @@ public interface UrlEntityDAO {
 
     int deleteAll();
 
-    UrlEntity findByDomain();
+    UrlEntity findByDomain(String domain);
 
-    UrlEntity findByScheme();
+    UrlEntity findByScheme(String domain);
 
 }
