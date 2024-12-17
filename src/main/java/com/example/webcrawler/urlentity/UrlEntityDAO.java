@@ -1,5 +1,7 @@
 package com.example.webcrawler.urlentity;
 
+import java.util.List;
+
 public interface UrlEntityDAO {
 
     void save(UrlEntity theUrlEntity);
@@ -8,8 +10,8 @@ public interface UrlEntityDAO {
 
     int deleteAll();
 
-    UrlEntity findByDomain(String domain);
+    List<UrlEntity> findByDomain(String domain);
 
-    UrlEntity findByScheme(String domain);
+    List<UrlEntity> findByScheme(String domain);
 
 }

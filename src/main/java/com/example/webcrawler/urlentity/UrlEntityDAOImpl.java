@@ -1,9 +1,14 @@
 package com.example.webcrawler.urlentity;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class UrlEntityDAOImpl implements UrlEntityDAO {
@@ -43,13 +48,20 @@ public class UrlEntityDAOImpl implements UrlEntityDAO {
     }
 
     @Override
-    public UrlEntity findByDomain(String domain) {
-        return null;
+    public List<UrlEntity> findByDomain(String domain) {
+        TypedQuery<UrlEntity> query = entityManager.createQuery("FROM UrlEntity WHERE domain=:theDomain", UrlEntity.class);
+
+        query.setParameter("theDomain", domain);
+
+        return query.getResultList();
     }
 
     @Override
-    public UrlEntity findByScheme(String domain) {
-        //todo
-        return null;
+    public List<UrlEntity> findByScheme(String scheme) {
+        TypedQuery<UrlEntity> query = entityManager.createQuery("FROM UrlEntity WHERE scheme=:theScheme", UrlEntity.class);
+
+        query.setParameter("theScheme", scheme);
+
+        return query.getResultList();
     }
 }

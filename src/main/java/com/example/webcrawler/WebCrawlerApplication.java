@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class WebCrawlerApplication {
@@ -25,12 +26,6 @@ public class WebCrawlerApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(WebCrawlerService theWebCrawlerService) {
 		return runner -> {
-			//ArrayList<URL> traversedUrls = theWebCrawlerService.crawl("https://crawler-test.com/links/repeated_internal_links");
-			//theWebCrawlerService.saveAll(traversedUrls);
-
-			int entitiesDeleted = theWebCrawlerService.deleteAll();
-			System.out.println("Entities deleted: " + entitiesDeleted);
-
 		};
 	}
 
@@ -52,6 +47,15 @@ public class WebCrawlerApplication {
 	private void readURL(UrlEntityDAO theUrlEntityDAO) {
 		UrlEntity theUrlEntity = theUrlEntityDAO.findById(1);
 		System.out.println("Printing UrlEntity: " + theUrlEntity.toString());
+	}
+
+	private void queryByDomain(String domain, WebCrawlerService theWebCrawlerService) {
+		ArrayList<UrlEntity> urlEntities = new ArrayList<>();
+		urlEntities = (ArrayList<UrlEntity>) theWebCrawlerService.queryUrlEntitiesByDomain(domain);
+		System.out.println("UrlEntities w/ domain = " + domain + ": ");
+		for (UrlEntity urlEntity: urlEntities) {
+			System.out.println(urlEntity.toString());
+		}
 	}
 
 }

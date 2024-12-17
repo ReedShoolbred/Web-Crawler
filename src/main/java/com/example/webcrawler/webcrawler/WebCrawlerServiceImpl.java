@@ -10,6 +10,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class WebCrawlerServiceImpl implements WebCrawlerService{
@@ -57,15 +58,15 @@ public class WebCrawlerServiceImpl implements WebCrawlerService{
     }
 
     @Override
-    public ArrayList<UrlEntity> queryUrlEntitiesByDomain(String domain) {
+    public List<UrlEntity> queryUrlEntitiesByDomain(String domain) {
         //todo
-        return null;
+        return urlEntityDAO.findByDomain(domain);
     }
 
     @Override
-    public ArrayList<UrlEntity> queryUrlEntitiesByScheme(String scheme) {
+    public List<UrlEntity> queryUrlEntitiesByScheme(String scheme) {
         //todo
-        return null;
+        return urlEntityDAO.findByScheme(scheme);
     }
 
 }

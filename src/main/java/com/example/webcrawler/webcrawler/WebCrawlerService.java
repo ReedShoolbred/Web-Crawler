@@ -4,6 +4,7 @@ import com.example.webcrawler.urlentity.UrlEntity;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * WebCrawlerService provides access to web crawling functionality and to database functionality for
@@ -45,7 +46,7 @@ public interface WebCrawlerService {
      * @param domain - String to compare against the domain attribute of each database element.
      * @return an ArrayList of all elements that contain the domain parameter as an exact match or a substring of their domain attribute.
      */
-    ArrayList<UrlEntity> queryUrlEntitiesByDomain(String domain);
+    List<UrlEntity> queryUrlEntitiesByDomain(String domain);
 
     /**
      * Query the database/other data storage implementation and return all elements that
@@ -53,5 +54,5 @@ public interface WebCrawlerService {
      * @param scheme - String to compare against the scheme attribute of each database element.
      * @return an ArrayList of all elements that contain the scheme parameter as an exact match or a substring of their scheme attribute.
      */
-    ArrayList<UrlEntity> queryUrlEntitiesByScheme(String scheme);
+    List<UrlEntity> queryUrlEntitiesByScheme(String scheme);
 }
