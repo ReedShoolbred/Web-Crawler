@@ -19,14 +19,27 @@ public class WebCrawlerRestController {
 
     //save a single URLEntitty
     @PostMapping("/crawl")
-    public ArrayList<URL> crawl(@RequestBody String url) {
-        return webCrawlerService.crawl(url);
+    public int crawl(@RequestBody String url) {
+
+        return webCrawlerService.saveAll(webCrawlerService.crawl(url));
     }
 
     //delete all elements from database and return number of items deleted
     @GetMapping("/deleteall")
     public int deleteAll() {
         return webCrawlerService.deleteAll();
+    }
+
+    //delete the specified element from the database
+    @PostMapping("/delete")
+    public boolean delete(@RequestBody String id) {
+        return webCrawlerService.delete(id);
+    }
+
+    //return all elements from database
+    @GetMapping("/queryall")
+    public List<UrlEntity> queryAll() {
+        return webCrawlerService.queryAll();
     }
 
     //query database and return all elements with the given domain

@@ -24,10 +24,10 @@ public class WebCrawlerServiceImplTest {
         UrlEntity theUrlEntity = new UrlEntity(theUrl);
 
         //act
-        theWebCrawlerServiceImpl.save(theUrlEntity);
+        theWebCrawlerServiceImpl.save(theUrl);
 
         //assert
-        verify(theUrlEntityDAO, times(1)).save(theUrlEntity);
+        verify(theUrlEntityDAO, times(1)).save(any());
     }
 
     @Test
@@ -36,17 +36,19 @@ public class WebCrawlerServiceImplTest {
         UrlEntityDAO theUrlEntityDAO = mock(UrlEntityDAO.class);
         WebCrawlerService theWebCrawlerService = new WebCrawlerServiceImpl(theUrlEntityDAO);
         URL theUrl = new URI("https://www.google.com").toURL();
+        ArrayList<URL> urls = new ArrayList<URL>(10);
+
         UrlEntity theUrlEntity = new UrlEntity(theUrl);
-        ArrayList<UrlEntity> urlEntities = new ArrayList<UrlEntity>(10);
+
         for (int i = 0; i < 10; i++){
-            urlEntities.add(theUrlEntity);
+            urls.add(theUrl);
         }
 
         //act
-        theWebCrawlerService.saveAll(urlEntities);
+        theWebCrawlerService.saveAll(urls);
 
         //assert
-        verify(theUrlEntityDAO, times(10)).save(theUrlEntity);
+        verify(theUrlEntityDAO, times(10)).save(any());
     }
 
     @Test

@@ -34,22 +34,26 @@ public class WebCrawlerServiceImpl implements WebCrawlerService{
 
     /**
      * Saves all URL object in traversedUrls to the database
-     * @param traversedUrlEntities - ArrayList of URL objects
+     * @param traversedUrls - ArrayList of URL objects
      */
     @Override
-    public void saveAll(ArrayList<UrlEntity> traversedUrlEntities) {
-        for (UrlEntity tempUrl: traversedUrlEntities){
+    public int saveAll(ArrayList<URL> traversedUrls) {
+        for (URL tempUrl: traversedUrls){
            save(tempUrl);
         }
+
+        return traversedUrls.size();
     }
 
     /**
      * Save url to database by delegating to urlEntityDAO
-     * @param urlEntity - UrlEntity object to be saved
+     * @param url - UrlEntity object to be saved
      */
     @Override
-    public void save(UrlEntity urlEntity) {
-        urlEntityDAO.save(urlEntity);
+    public boolean save(URL url) {
+        urlEntityDAO.save(new UrlEntity(url));
+
+        return true;
     }
 
     @Override
@@ -58,15 +62,24 @@ public class WebCrawlerServiceImpl implements WebCrawlerService{
     }
 
     @Override
+    public boolean delete(String id) {
+        int parsedId = Integer.parseInt(id);
+        return urlEntityDAO.delete(parsedId);
+    }
+
+    @Override
     public List<UrlEntity> queryUrlEntitiesByDomain(String domain) {
-        //todo
         return urlEntityDAO.findByDomain(domain);
     }
 
     @Override
     public List<UrlEntity> queryUrlEntitiesByScheme(String scheme) {
-        //todo
         return urlEntityDAO.findByScheme(scheme);
+    }
+
+    @Override
+    public List<UrlEntity> queryAll() {
+        return urlEntityDAO.queryAll();
     }
 
 }

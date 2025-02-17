@@ -21,15 +21,17 @@ public interface WebCrawlerService {
 
     /**
      * Save the given UrlEntity to a database or other data persistence module.
-     * @param urlEntity - UrlEntity object to be saved
+     * @param url- UrlEntity object to be saved
+     * @return true when URL is saved
      */
-    void save(UrlEntity urlEntity);
+    boolean save(URL url);
 
     /**
      * Save all UrlEntities in the given ArrayList to a database or other data storage implementation.
-     * @param traversedUrlEntities - ArrayList of UrlEntity objects to be saved
+     * @param traversedUrls - ArrayList of UrlEntity objects to be saved
+     * @return number of URLs saved to the database
      */
-    void saveAll(ArrayList<UrlEntity> traversedUrlEntities);
+    int saveAll(ArrayList<URL> traversedUrls);
 
 
     /**
@@ -37,6 +39,13 @@ public interface WebCrawlerService {
      * @return the number of elements deleted
      */
     int deleteAll();
+
+    /**
+     * Remove the element with the given id from the database.
+     * @param id - the database id of the element to be deleted
+     * @return true if the id is valid, false otherwise
+     */
+    boolean delete(String id);
 
     /**
      * Query the database/other data storage implementation and return all elements that contain the domain parameter
@@ -52,7 +61,13 @@ public interface WebCrawlerService {
      * Query the database/other data storage implementation and return all elements that
      * contain the scheme parameter as an exact match or a substring of their scheme.
      * @param scheme - String to compare against the scheme attribute of each database element.
-     * @return an ArrayList of all elements that contain the scheme parameter as an exact match or a substring of their scheme attribute.
+     * @return a List of all elements that contain the scheme parameter as an exact match or a substring of their scheme attribute.
      */
     List<UrlEntity> queryUrlEntitiesByScheme(String scheme);
+
+    /**
+     * Return all elements from the database
+     * @return a List of all elements from the database
+     */
+    List<UrlEntity> queryAll();
 }
