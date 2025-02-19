@@ -1,7 +1,8 @@
 Web-Crawler is intended solely as a demo application to implement a REST API and CRUD functionality in a Spring application. 
 
-There is currently no REST controller or UI implementation, so functionality is only accessible by downloading the source code and modifying the main application. 
-Once the REST controller and UI are implemented, I will update this with a user guide. 
-
-If you would like to purely test the webcrawling and/or database functionality though, you can do so by connecting your own database via the application.properties file. 
-The UrlEntity class provides the necessary mapping information for proper database setup. 
+An more in-depth user guide is currently in the works, but here are the basic instructions to test the application:
+-Download source code.
+-Using the UrlEntity class, set up a database with a field for each mapping found in UrlEntity. (During development, I found it easiest to use MySQL and create an in-memory database). 
+-Input the database specifications (url, username, password, etc..) in the application.properties file.
+-Run the WebCrawlerApplication.java file.
+-You can then use the web-crawler-frontend repository as a basic front end to interact with the Web-Crawler rest endpoints.
